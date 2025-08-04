@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <title>Ahwet El 2zez</title>
+  <link rel="icon" type="image/png" href="abuabed.png">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('ahwe.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      text-shadow: 1px 1px 4px black;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem 0.5rem;
+    }
+
+    header h1 {
+      font-family: 'UnifrakturCook', cursive;
+      font-size: 5rem;
+      color: gold;
+      margin: 0;
+    }
+
+    header h2 {
+      font-size: 1.2rem;
+      font-weight: normal;
+      margin-top: 0.5rem;
+      color: #fff;
+    }
+    
+    a {
+      color: gold;
+      }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .joke-box {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 100%;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .joke-box button {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      background: gold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .joke-box button:hover {
+      background: #d4af37;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.8);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ahwet El 2zez</h1>
+    <h2>B2idarit Abu El Abed shakhsiyan</h2>
+  </header>
+
+  <main>
+    <div class="joke-box">
+      <div id="joke">Loading joke...</div>
+      <button onclick="fetchJoke()">Another/Gheyra</button>
+    <p>Note: ma32oul tekhod wa2t la tbayin el nekte, sboro! / it might take some time to load jokes, be patient!</p>
+    </div>
+  </main>
+
+  <footer>
+    Made by a Lebanese for the Lebanese people 🇱🇧
+    <p>If you want you can make your own website with the <a href="">API</a>.</p>
+    <p>You have some recommandations or a joke to add? send me an <a href="mailto:abuelabed@naous.eu.org">email</a>.</p>
+  </footer>
+
+  <script>
+    async function fetchJoke() {
+      try {
+        const res = await fetch('https://abu-abed.onrender.com/api/joke');
+        const data = await res.json();
+        document.getElementById('joke').innerText = data.joke;
+      } catch (err) {
+        document.getElementById('joke').innerText = 'Failed to load joke.';
+      }
+    }
+
+    fetchJoke();
+  </script>
+</body>
+</html>
